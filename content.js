@@ -8,7 +8,7 @@ const beautyProduct = (url.indexOf('category=beauty-products') > -1)
 const cartBtn = document.querySelector('.c-product-add-to-cart__text')
 if(cartBtn) cartBtn.addEventListener('click', onClick)
 
-function onClick(){
+function onClick () {
   let cartScore
   if(womenProduct) cartScore = "womenCartScore"
   if(menProduct) cartScore = "menCartScore"
@@ -20,6 +20,13 @@ function onClick(){
     cartExtraScore: cartScore
   })
 }
+
+chrome.runtime.onMessage.addListener((request) => {
+  console.log(request)
+  chrome.runtime.sendMessage({
+    resetBtnClicked: request
+  })
+})
 
 chrome.runtime.sendMessage({
   womenScore: womenProduct,
