@@ -4,12 +4,17 @@
   "manifest_version": 2,
   "content_scripts": [
     {
-      "matches": ["https://www.urbanoutfitters.com/new-arrivals"],
+      "matches": ["https://www.urbanoutfitters.com/*"],
       "js": ["content.js"]
     }
   ],
   "browser_action": {
     "default_popup": "popup.html",
     "default_title": "Affinity"
-  }
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "permissions": ["tabs", "storage"]
 }
