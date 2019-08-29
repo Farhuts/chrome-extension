@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
         if(request.cartExtraScore === "womenCartScore") newTotal += 2
         if(totalScore.womenPageScore) newTotal += parseInt(totalScore.womenPageScore)
         else newTotal = 1
-
+        console.log(window.pages, request);
         window.pages["womenPageScore"] = newTotal
         chrome.storage.sync.set({"womenPageScore": newTotal})
     })
@@ -63,22 +63,22 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
   }
 })
 
- // set up a listener
-// const port = chrome.extension.connect({
-//    name: “nameOfChannel”
-// });
-//
-// // send events
-// port.postMessage({
-//     key1: 'value1',
-//     key2: 'value2'
-// });
-//
-// // listen for events
-// port.onMessage.addListener((msg) => {
-// });
-//
-// // Accessing the current active tab
-// chrome.tabs.query({ active: true, currentWindow: true },(tabs) => {
-//     var currentTab = tabs[0];
-// });
+chrome.storage.onChanged.addListener((changes, namespace)=>{
+  for (var key in changes) {
+    var storageChange = changes[key];
+    console.log('Storage key "%s" in namespace "%s" changed. ' +
+                'Old value was "%s", new value is "%s".',
+                key,
+                namespace,
+                storageChange.oldValue,
+                storageChange.newValue);
+  }
+});
+
+chrome.runtime.onMessage.addListener((request)=>{
+  if(request.resetBtnClicked === "resetClicked") {
+    chrome.storage.sync.clear(()=>{
+        console.log('from clear');
+    })
+  }
+})
