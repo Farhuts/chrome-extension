@@ -5,7 +5,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.urbanoutfitters.com/*"],
-      "js": ["content.js", "content-layout.js"],
+      "js": ["content.js", "content-adjust-layout.js", "content-initial-layout.js"],
       "css": ["style.css"]
     }
   ],
