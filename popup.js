@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
       elemTotal.innerHTML = 0
     })
     function resetSections(response) {
-      console.log(response);
       return response.resetLayout
     }
   })
