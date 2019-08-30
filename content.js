@@ -5,10 +5,16 @@ const homeProduct = (url.indexOf('category=home') > -1)
 const lifeStyleProduct = (url.indexOf('category=lifestyle') > -1)
 const beautyProduct = (url.indexOf('category=beauty-products') > -1)
 
-const cartBtn = document.querySelector('.c-product-add-to-cart__text')
-if(cartBtn) cartBtn.addEventListener('click', onClick)
+chrome.runtime.sendMessage({
+  womenScore: womenProduct,
+  menScore: menProduct,
+  homeScore: homeProduct,
+  lifeStyleScore: lifeStyleProduct,
+  beautyScore: beautyProduct
+})
 
-function onClick () {
+const cartBtn = document.querySelector('.c-product-add-to-cart__text')
+if(cartBtn) cartBtn.addEventListener('click', ()=>{
   let cartScore
   if(womenProduct) cartScore = "womenCartScore"
   if(menProduct) cartScore = "menCartScore"
@@ -19,18 +25,4 @@ function onClick () {
   chrome.runtime.sendMessage({
     cartExtraScore: cartScore
   })
-}
-
-chrome.runtime.onMessage.addListener((request) => {
-  chrome.runtime.sendMessage({
-    resetBtnClicked: request
-  })
-})
-
-chrome.runtime.sendMessage({
-  womenScore: womenProduct,
-  menScore: menProduct,
-  homeScore: homeProduct,
-  lifeStyleScore: lifeStyleProduct,
-  beautyScore: beautyProduct
 })
