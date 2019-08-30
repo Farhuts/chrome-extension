@@ -3,7 +3,7 @@ const url = window.location.href
 // get the category of the product page that the user is viewing
 const womenProduct = (url.indexOf('category=women') > -1)
 const menProduct = (url.indexOf('category=mens') > -1 || url.indexOf('category=latest-mens') > -1)
-const homeProduct = (url.indexOf('category=home') > -1)
+const homeProduct = (url.indexOf('category=apartment') > -1)
 const lifeStyleProduct = (url.indexOf('category=lifestyle') > -1)
 const beautyProduct = (url.indexOf('category=beauty-products') > -1)
 

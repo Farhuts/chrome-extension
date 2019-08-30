@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=> {
   const bg = chrome.extension.getBackgroundPage()
 
-
   const womenTotal = document.getElementById('womenTotal')
   const menTotal = document.getElementById('menTotal')
   const homeTotal = document.getElementById('homeTotal')
@@ -20,23 +19,27 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
 // Reset Scores and Layout Sections
   resetBtn.addEventListener('click', ()=>{
-    chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, 'resetClicked', resetSections)
+    chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, 'resetClicked')
     })
-    arrTotal.map((elemTotal)=>{
-      elemTotal.innerHTML = 0
-    })
+
     function resetSections(response) {
+      console.log(response);
       return response.resetLayout
     }
+    arrTotal.map((elemTotal)=>{
+      elemTotal.innerHTML = 0
+      console.log(elemTotal);
+    })
   })
 
   // Adjust Layout
     adjustBtn.addEventListener('click', ()=>{
-      chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
+      chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, 'adjustClicked', changeLayout)
       })
       function changeLayout(response){
+        console.log(response);
         return response.initLayoutChange
       }
     })

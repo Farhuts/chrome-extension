@@ -1,10 +1,9 @@
 window.pages = {}
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
-  chrome.storage.sync.get(['womenPageScore', "menPageScore", "homePageScore", "lifeStylePageScore", "beautyPageScore"], (totalScore)=>{
+  chrome.storage.sync.get(["womenPageScore", "menPageScore", "homePageScore", "lifeStylePageScore", "beautyPageScore"], (totalScore)=>{
       let newTotal = 1
-      console.log(newTotal);
-
+      console.log(request);
     // set total for viewed women products **************************************
     if(request.womenScore || (request.cartExtraScore === "womenCartScore")){
       if(request.cartExtraScore === "womenCartScore") newTotal += 2
@@ -57,10 +56,30 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
   })
 })
 
-chrome.runtime.onMessage.addListener((request)=>{
+chrome.storage.onChanged.addListener((changes, namespace)=>{
+  for (var key in changes) {
+    var storageChange = changes[key];
+    console.log('Storage key "%s" in namespace "%s" changed. ' +
+                'Old value was "%s", new value is "%s".',
+                key,
+                namespace,
+                storageChange.oldValue,
+                storageChange.newValue);
+  }
+});
+
+console.log(chrome.storage.sync);
+chrome.runtime.onMessage.addListener((request, send, sendResponse)=>{
   console.log(request);
   if(request.resetBtnClicked === "resetClicked") {
     chrome.storage.sync.clear(()=>{
+      window.pages = {
+        "womenPageScore": 0,
+        "menPageScore": 0,
+        "homePageScore": 0,
+        "lifeStyleCartScore": 0,
+        "beautyPageScore": 0
+      }
         console.log('from clear');
     })
   }

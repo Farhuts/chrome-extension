@@ -11,6 +11,9 @@ const footerContainer = document.getElementsByTagName('footer')[0]
 const footer2 = document.getElementsByClassName('c-site-footer')[0]
 const footer1 = document.getElementsByClassName('dom-sticky-email-signup c-sticky-email-signup  js-sticky-email-signup-container')[0]
 
+// Get white spaces and disable them
+const space = document.getElementsByClassName('o-row s-20-pixel-margin-shim  ')
+
 // Get product sections
 let rowsDiv = divsCollection.slice(-5)
 let womenSection = rowsDiv[0]
@@ -34,14 +37,12 @@ function initLayoutChange() {
       ]
 
       console.log(storeInfo);
+
       storeInfo.sort((a, b) => { return b.sectionScore - a.sectionScore})
 
       storeInfo.forEach((elem)=> {
         displayArr.push(elem.pageSection)
       })
-
-      // Get white spaces and disable them
-      const space = document.getElementsByClassName('o-row s-20-pixel-margin-shim  ')
 
       for(let i = 0; i < displayArr.length; ++i) {
         space[i].style.display = 'none'
@@ -61,5 +62,9 @@ initLayoutChange()
 
 // Send this function to popup.js onAdjust layout btn
 chrome.runtime.onMessage.addListener((request, send, sendResponse) => {
-  sendResponse({initLayoutChange: initLayoutChange()})
+  if(request === 'adjustClicked') {
+    sendResponse({
+      initLayoutChange: initLayoutChange()
+    })
+  }
 })
