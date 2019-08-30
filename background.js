@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
         if(request.cartExtraScore === "womenCartScore") newTotal += 2
         if(totalScore.womenPageScore) newTotal += parseInt(totalScore.womenPageScore)
         else newTotal = 1
-        console.log(window.pages, request);
+
         window.pages["womenPageScore"] = newTotal
         chrome.storage.sync.set({"womenPageScore": newTotal})
     })
@@ -44,7 +44,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
         if(totalScore.lifeStylePageScore) newTotal += parseInt(totalScore.lifeStylePageScore)
         else newTotal = 1
 
-        console.log(window.pages, newTotal);
         window.pages["lifeStylePageScore"] = newTotal
         chrome.storage.sync.set({"lifeStylePageScore": newTotal})
     })
@@ -75,7 +74,7 @@ chrome.storage.onChanged.addListener((changes, namespace)=>{
   }
 });
 
-chrome.runtime.onMessage.addListener((request)=>{
+chrome.runtime.onMessage.addListener((request, send, sendResponse)=>{  
   if(request.resetBtnClicked === "resetClicked") {
     chrome.storage.sync.clear(()=>{
         console.log('from clear');
