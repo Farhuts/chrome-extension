@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', ()=> {
   const bg = chrome.extension.getBackgroundPage()
 
+
   const womenTotal = document.getElementById('womenTotal')
   const menTotal = document.getElementById('menTotal')
   const homeTotal = document.getElementById('homeTotal')
@@ -9,14 +10,19 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const resetBtn = document.querySelector('button')
   const arrTotal = [womenTotal, menTotal, homeTotal, lifeTotal, beautyTotal]
 
+// Assign Acores
   if(bg.pages.womenPageScore) womenTotal.innerHTML = `${bg.pages.womenPageScore}`
   if(bg.pages.menPageScore) menTotal.innerHTML = `${bg.pages.menPageScore}`
   if(bg.pages.homePageScore) homeTotal.innerHTML = `${bg.pages.homePageScore}`
   if(bg.pages.lifeStylePageScore) lifeTotal.innerHTML = `${bg.pages.lifeStylePageScore}`
   if(bg.pages.beautyPageScore) beautyTotal.innerHTML = `${bg.pages.beautyPageScore}`
 
+  // chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
+  //   chrome.tabs.sendMessage(tabs[0].id, `${bg.pages.womenPageScore}`)
+  // })
+
+// Reset Scores
   resetBtn.addEventListener('click', ()=>{
-    console.log("btn pressed")
     chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
       chrome.tabs.sendMessage(tabs[0].id, 'resetClicked')
     })
