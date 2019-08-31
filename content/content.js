@@ -4,8 +4,8 @@ const mainPage = (url.indexOf('https://www.urbanoutfitters.com/new-arrivals') > 
 function traverseDom(searchStr) {
   let result = Array.prototype.slice.call(document.querySelectorAll('*')).filter((element) => {
       let match = element.outerHTML.match(searchStr)
-      if (match == null) return false
-      if (match == void 0) return false;
+      if (match === null) return false
+      if (match === "undefined" || match === 0) return false;
       return true;
     })
     return result;
@@ -14,9 +14,9 @@ function traverseDom(searchStr) {
 // Find product category
 let category;
 const categoryList = new RegExp('c-breadcrumb__ol u-clearfix', 'gi')
-if(categoryList) {
-  const result = traverseDom(categoryList)
-  const categoryElems = result.slice(-1)
+const result = traverseDom(categoryList)
+const categoryElems = result.slice(-1)
+if(categoryElems.length > 0) {
   const categlemsChildren = categoryElems[0].childNodes
   category = categlemsChildren[3].innerText
 }

@@ -1,7 +1,7 @@
 window.pages = {}
 
 // Create notifications
-const NOTIFICATION_ID = "some_random_string";
+const NOTIFICATION_ID = "unicorns_are_real";
   function showNotification () {
     chrome.notifications.clear(NOTIFICATION_ID, (cleared) => {
         let options = {
@@ -14,7 +14,7 @@ const NOTIFICATION_ID = "some_random_string";
     })
   }
 
-
+// Listen for events from content
 chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
   chrome.storage.sync.get(["womenPageScore", "menPageScore", "homePageScore", "lifeStylePageScore", "beautyPageScore"], (totalScore)=>{
       let newTotal = 1
