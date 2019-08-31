@@ -2,14 +2,19 @@
   "name": "affinity",
   "version": "1.0",
   "manifest_version": 2,
+  "icons": {
+    "128": "assets/icons/128.png",
+    "48": "assets/icons/48.png",
+    "16": "assets/icons/16.png"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.urbanoutfitters.com/*"],
-      "js": ["content.js", "content-adjust-layout.js", "content-initial-layout.js"],
-      "css": ["style.css"]
+      "js": ["content/content.js", "content/content-adjust-layout.js", "content/content-reset-layout.js"]
     }
   ],
   "browser_action": {
+    "default_icon": "assets/icons/48.png",
     "default_popup": "popup.html",
     "default_title": "Affinity"
   },
@@ -17,5 +22,5 @@
     "scripts": ["background.js"],
     "persistent": true
   },
-  "permissions": ["tabs", "storage"]
+  "permissions": ["tabs", "storage", "notifications"]
 }

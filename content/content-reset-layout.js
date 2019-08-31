@@ -35,9 +35,3 @@ chrome.runtime.onMessage.addListener((request) => {
     })
   }
 })
-
-// chrome.storage.sync.set({"womenPageScore": 0})
-// chrome.storage.sync.set({"menPageScore": 0})
-// chrome.storage.sync.set({"homePageScore": 0})
-// chrome.storage.sync.set({"lifeStylePageScore": 0})
-// chrome.storage.sync.set({"beautyPageScore": 0})

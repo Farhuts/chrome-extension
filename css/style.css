@@ -1,0 +1,90 @@
+body {
+  background-color: #48465c;
+}
+
+.containerMain {
+  padding: 1em;
+  width: 400px ;
+  height: 430px;
+  background: url("chrome-extension://ihinppackipcgihdldfckennbpakjpjo/assets/circles.jpg");
+}
+
+h3{
+  text-align: center;
+  font-family: 'Kaushan Script', cursive;
+  color: #f7f8e4;
+}
+
+i.material-icons {
+  font-size: 36px;
+}
+
+table {
+  width: 100%;
+}
+
+td, th {
+  padding: 10px 20px !important;
+}
+
+th {
+  font-size: 23px;
+    color: #f7f8e4;
+}
+td{
+  font-size: 20px;
+  font-family: 'Righteous', cursive;
+}
+
+ul {
+  text-align: center;
+  list-style-type: none;
+}
+
+#womenTotal, #menTotal, #homeTotal, #lifeTotal, #beautyTotal{
+  font-size: 25px;
+  font-family: 'Monoton', cursive;
+}
+.buttons {
+  margin: 5% 0 10% 0;
+  display: flex;
+  justify-content: space-around;
+  height: 5em;
+}
+
+button#reset, button#adjust {
+  border-radius: 8%;
+  width: 90px;
+  height: 60px;
+}
+
+#adjust {
+  line-height: 20px;
+}
+
+.tooltip{
+  position: relative;
+  display: inline-block;
+}
+.tooltiptext{
+  font-size: 14px;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -110px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
