@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
     })
 
     function resetSections(response) {
-      console.log(response);
       return response.resetLayout
     }
     arrTotal.map((elemTotal)=>{

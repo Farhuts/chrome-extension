@@ -6,6 +6,7 @@ const menProduct = (url.indexOf('category=mens') > -1 || url.indexOf('category=l
 const homeProduct = (url.indexOf('category=apartment') > -1)
 const lifeStyleProduct = (url.indexOf('category=lifestyle') > -1)
 const beautyProduct = (url.indexOf('category=beauty-products') > -1)
+const mainPage = (url.indexOf('https://www.urbanoutfitters.com/new-arrivals') > -1)
 
 // Send the category of the product page that the user is viewing to bg
 chrome.runtime.sendMessage({
@@ -30,3 +31,8 @@ if(cartBtn) cartBtn.addEventListener('click', ()=>{
     cartExtraScore: cartScore
   })
 })
+
+// const imgURL = chrome.extension.getURL("assets/circles.jpg")
+// // document.getElementById("bg-circles.jpg").src = imgURL;
+//
+// console.log(imgURL);
