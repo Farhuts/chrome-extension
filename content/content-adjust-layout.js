@@ -1,10 +1,6 @@
 // Get matches for all products
-const divsCollection = Array.prototype.slice.call(document.querySelectorAll('*')).filter(function(element) {
-    let match = element.outerHTML.match(/categoryProductTray/gi);
-    if (match === null) return false
-    if (match === void 0) return false
-    return true;
-  })
+const layoutList = new RegExp('categoryProductTray', 'gi')
+const divsCollection = traverseDom(layoutList)
 
 // Get footer info
 const footerContainer = document.getElementsByTagName('footer')[0]
