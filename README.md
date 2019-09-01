@@ -17,4 +17,3 @@ In case if your grandma were searching for mittens or cat rugs while you were no
 ### License
 Affinity-extension is available under the MIT license. See the [LICENSE](LICENSE.md) file for more info.
 
-# Have fun!
