@@ -12,7 +12,7 @@ You can also customize the page view manually by clicking the “SORT BY Favorit
 ![alt text](assets/affinity-update.png)
 
 ### What if my grandmother ruined my affinity points? ![alt text](assets/granny48.png) 
-In case your grandmother was looking for mittens or cat rugs while you were not at home, and now the most popular category in your extension is the **house**, but your heart calls for new arrivals for **men's category**, just press the reset button and start your unique shopping experience from scratch.
+In case your grandmother was looking for mittens or cat rugs while you were not at home, and now the most popular category in your extension is the **HOME**, but your heart calls for new arrivals for **MEN's category**, just press the reset button and start your unique shopping experience from scratch.
 
 ### License
 Affinity-extension is available under the MIT license. See the [LICENSE](LICENSE.md) file for more info.
