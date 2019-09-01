@@ -14,6 +14,15 @@ You can also customize the page view manually by clicking the “SORT BY Favorit
 ### What if my grandmother ruined my affinity points? ![alt text](assets/granny48.png) 
 In case your grandmother was looking for mittens or cat rugs while you were not at home, and now the most popular category in your extension is the **HOME**, but your heart calls for new arrivals for **MEN's category**, just press the reset button and start your unique shopping experience from scratch.
 
+### How to start using it?
+Clone the repository
+Go to Chrome menu -> More tools -> Extensions
+Press "Load unpacked extension"
+Choose the folder you just cloned
+You can now start using it and test it live!
+Pull requests and issues are more than welcome.
+
+
 ### License
 Affinity-extension is available under the MIT license. See the [LICENSE](LICENSE.md) file for more info.
 
