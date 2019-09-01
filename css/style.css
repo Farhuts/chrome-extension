@@ -19,6 +19,8 @@ i.material-icons {
   font-size: 36px;
 }
 
+/* Table styling */
+
 table {
   width: 100%;
 }
@@ -36,15 +38,12 @@ td{
   font-family: 'Righteous', cursive;
 }
 
-ul {
-  text-align: center;
-  list-style-type: none;
-}
-
 #womenTotal, #menTotal, #homeTotal, #lifeTotal, #beautyTotal{
   font-size: 25px;
   font-family: 'Monoton', cursive;
 }
+
+/* Buttons */
 .buttons {
   margin: 5% 0 10% 0;
   display: flex;
@@ -62,13 +61,16 @@ button#reset, button#adjust {
   line-height: 20px;
 }
 
+/* Tooltip hover */
 .tooltip{
   position: relative;
   display: inline-block;
 }
+
 .tooltiptext{
   font-size: 14px;
 }
+
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 220px;
