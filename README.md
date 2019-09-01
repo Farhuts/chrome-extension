@@ -1,4 +1,4 @@
-## Affinity-extension or Happy Shopper ![alt text](assets/icons/128.png) 
+## Affinity-extension or Happy Shopper ![alt text](assets/icons/128.png)  (Sample Project)
 ### What is it?
 This is a Chrome extension that provides a unique and efficient shopping experience at [Urban Outfitters](https://www.urbanoutfitters.com/new-arrivals) website.
 It tracks every product category of a visited page and adds points to the Product Category Section in your tab extension. 
