@@ -1,37 +1,41 @@
-// Initialize reset layout func
-function resetLayout() {
-  chrome.storage.sync.get([
-    "womenPageScore","menPageScore", "homePageScore", "lifeStylePageScore", "beautyPageScore"],
-    (score)=> {
+  // ******** Initialize Reset Layout Function ********
 
-      let resetSectionArr = [womenSection, menSection, homeSection, lifeStyleSection, beautySection]
+  function resetLayout() {
+    chrome.storage.sync.get([
+      "womenPageScore","menPageScore", "homePageScore", "lifeStylePageScore", "beautyPageScore"],
+      (score)=> {
 
-      for(let i = 0; i < resetSectionArr.length; ++i) {
-        space[i].style.display = 'none'
-        const container = document.getElementById('u-skip-anchor')
-        container.appendChild(resetSectionArr[i])
-        document.body.appendChild(container)
-      }
-      footerContainer.appendChild(footer1)
-      footerContainer.appendChild(footer2)
-      document.body.appendChild(footerContainer)
-    })
-}
+        let resetSectionArr = [womenSection, menSection, homeSection, lifeStyleSection, beautySection]
 
-// Send this function to popup.js onReset btn and to bg page
-chrome.runtime.onMessage.addListener((request, send, sendResponse) => {
-  console.log(request);
-  if(request === "resetClicked") {
-    sendResponse({
-      resetLayout: resetLayout()
-    })
+        for(let i = 0; i < resetSectionArr.length; ++i) {
+          space[i].style.display = 'none'
+
+          const container = document.getElementById('u-skip-anchor')
+          container.appendChild(resetSectionArr[i])
+
+          document.body.appendChild(container)
+        }
+        footerContainer.appendChild(footer1)
+        footerContainer.appendChild(footer2)
+
+        document.body.appendChild(footerContainer)
+      })
   }
-})
 
-chrome.runtime.onMessage.addListener((request) => {
-  if(request === "resetClicked") {
-    chrome.runtime.sendMessage({
-      resetBtnClicked: request
-    })
-  }
-})
+  // ******** Send this function to popup.js and bg when Reset btn clicked ********
+
+  chrome.runtime.onMessage.addListener((request, send, sendResponse) => {
+    if(request === "resetClicked") {
+      sendResponse({
+        resetLayout: resetLayout()
+      })
+    }
+  })
+
+  chrome.runtime.onMessage.addListener((request) => {
+    if(request === "resetClicked") {
+      chrome.runtime.sendMessage({
+        resetBtnClicked: request
+      })
+    }
+  })

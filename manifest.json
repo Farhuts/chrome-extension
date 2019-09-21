@@ -3,9 +3,9 @@
   "version": "1.0",
   "manifest_version": 2,
   "icons": {
-    "128": "assets/icons/128.png",
-    "48": "assets/icons/48.png",
-    "16": "assets/icons/16.png"
+    "128": "public/assets/icons/128.png",
+    "48": "public/assets/icons/48.png",
+    "16": "public/assets/icons/16.png"
   },
   "content_scripts": [
     {
@@ -14,12 +14,12 @@
     }
   ],
   "browser_action": {
-    "default_icon": "assets/icons/48.png",
-    "default_popup": "popup.html",
+    "default_icon": "public/assets/icons/48.png",
+    "default_popup": "public/popup.html",
     "default_title": "Affinity"
   },
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["bg/background.js"],
     "persistent": true
   },
   "permissions": ["tabs", "storage", "notifications"]

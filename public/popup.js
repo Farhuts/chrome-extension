@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', ()=> {
-  const bg = chrome.extension.getBackgroundPage()
+
+// ******** Set Up Port / Connection from Bg ********
+
+  const port = chrome.extension.connect({
+     name: "Unicorns Are Real"
+   });
+
+// ******** Find HTMl elements ********
 
   const womenTotal = document.getElementById('womenTotal')
   const menTotal = document.getElementById('menTotal')
@@ -10,35 +17,39 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const adjustBtn = document.getElementById('adjust')
   const arrTotal = [womenTotal, menTotal, homeTotal, lifeTotal, beautyTotal]
 
-// Assign Scores
-  if(bg.pages.womenPageScore) womenTotal.innerHTML = `${bg.pages.womenPageScore}`
-  if(bg.pages.menPageScore) menTotal.innerHTML = `${bg.pages.menPageScore}`
-  if(bg.pages.homePageScore) homeTotal.innerHTML = `${bg.pages.homePageScore}`
-  if(bg.pages.lifeStylePageScore) lifeTotal.innerHTML = `${bg.pages.lifeStylePageScore}`
-  if(bg.pages.beautyPageScore) beautyTotal.innerHTML = `${bg.pages.beautyPageScore}`
+// ******** Assign Scores  ********
 
-// Reset Scores and Layout Sections
+  port.onMessage.addListener((msg) => {
+    if(msg.womenPageScore) womenTotal.innerHTML = `${msg.womenPageScore}`
+    if(msg.menPageScore) menTotal.innerHTML = `${msg.menPageScore}`
+    if(msg.homePageScore) homeTotal.innerHTML = `${msg.homePageScore}`
+    if(msg.lifeStylePageScore) lifeTotal.innerHTML = `${msg.lifeStylePageScore}`
+    if(msg.beautyPageScore) beautyTotal.innerHTML = `${msg.beautyPageScore}`
+  });
+
+// ******** Reset Scores and Layout Sections after Reset Btn is clicked ********
+
   resetBtn.addEventListener('click', ()=>{
     chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, 'resetClicked')
     })
 
     function resetSections(response) {
+      console.log(response);
       return response.resetLayout
     }
     arrTotal.map((elemTotal)=>{
       elemTotal.innerHTML = 0
-      console.log(elemTotal);
     })
   })
 
-  // Adjust Layout
+// ******** Adjust Layout after Adjust btn is clicked ********
+
     adjustBtn.addEventListener('click', ()=>{
       chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, 'adjustClicked', changeLayout)
       })
       function changeLayout(response){
-        console.log(response);
         return response.initLayoutChange
       }
     })

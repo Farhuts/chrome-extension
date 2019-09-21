@@ -84,6 +84,7 @@ chrome.runtime.onMessage.addListener((request)=>{
 // ******** Reset Scores ********
 
 chrome.runtime.onMessage.addListener((request) =>{
+  console.log(request);
   const sections = ['womenPageScore', 'menPageScore', 'homePageScore', 'lifeStylePageScore', 'beautyPageScore']
   if(request.resetBtnClicked === "resetClicked") {
     chrome.storage.sync.clear(()=>{
