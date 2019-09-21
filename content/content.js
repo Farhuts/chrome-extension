@@ -1,4 +1,5 @@
   const url = window.location.href
+  const mainPage = (url.indexOf('https://www.urbanoutfitters.com/new-arrivals') > -1)
 
   // ******** Traverse DOM Function********
 

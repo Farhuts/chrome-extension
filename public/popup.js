@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
     if(msg.homePageScore) homeTotal.innerHTML = `${msg.homePageScore}`
     if(msg.lifeStylePageScore) lifeTotal.innerHTML = `${msg.lifeStylePageScore}`
     if(msg.beautyPageScore) beautyTotal.innerHTML = `${msg.beautyPageScore}`
+
+    if(msg.reset) {
+      arrTotal.map((elemTotal)=>{
+        elemTotal.innerHTML = 0
+      })
+    }
   });
 
 // ******** Reset Scores and Layout Sections after Reset Btn is clicked ********
@@ -35,9 +41,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
     })
 
     function resetSections(response) {
-      console.log(response);
       return response.resetLayout
     }
+
     arrTotal.map((elemTotal)=>{
       elemTotal.innerHTML = 0
     })
